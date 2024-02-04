@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Arrays;
 
@@ -30,7 +29,7 @@ public class Ping extends Command {
         byte[] inputPayload = new byte[RESPONSE_LENGHT];
 
         try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress(host, port), connectionTimeout);
+            socket.connect(super.getInetSocketAddress(), connectionTimeout);
             socket.setSoTimeout(readTimeout);
 
             try (OutputStream outputStream = socket.getOutputStream();

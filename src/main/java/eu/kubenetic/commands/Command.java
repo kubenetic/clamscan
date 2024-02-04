@@ -2,11 +2,13 @@ package eu.kubenetic.commands;
 
 import eu.kubenetic.exceptions.MissingPropertyException;
 
+import java.net.InetSocketAddress;
 import java.util.Objects;
 
 public abstract class Command {
 
     protected final static byte[] CLOSE_SEQUENCE = new byte[]{0, 0, 0, 0};
+    protected final static int DEFAULT_BUFFER_SIZE = 2048;
 
     protected final String host;
     protected final Integer port;
@@ -23,7 +25,7 @@ public abstract class Command {
     protected final int bufferSize;
 
     public Command(String host, Integer port) throws MissingPropertyException {
-        this(host, port, 5000, 5000, 2048);
+        this(host, port, 5000, 5000, DEFAULT_BUFFER_SIZE);
     }
 
     public Command(String host, Integer port, int connectionTimeout, int readTimeout, int bufferSize)
@@ -41,5 +43,9 @@ public abstract class Command {
         this.connectionTimeout = connectionTimeout;
         this.readTimeout = readTimeout;
         this.bufferSize = bufferSize;
+    }
+
+    protected InetSocketAddress getInetSocketAddress() {
+        return new InetSocketAddress(host, port);
     }
 }

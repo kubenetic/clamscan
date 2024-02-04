@@ -6,7 +6,6 @@ import eu.kubenetic.exceptions.MissingPropertyException;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
@@ -22,7 +21,7 @@ public class Version extends Command {
 
     public String execute() {
         try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress(host, port), connectionTimeout);
+            socket.connect(super.getInetSocketAddress(), connectionTimeout);
             socket.setSoTimeout(readTimeout);
 
             try (OutputStream outputStream = socket.getOutputStream();
