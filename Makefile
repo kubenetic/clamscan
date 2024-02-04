@@ -1,4 +1,4 @@
-clamav_version=1.1.3-35
+clamav_version=1.1.3
 container_name=clamav
 
 start_clamav:
