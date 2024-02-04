@@ -5,12 +5,10 @@ import eu.kubenetic.exceptions.MissingPropertyException;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 public class Version extends Command {
     public Version(String host, Integer port) throws MissingPropertyException {
