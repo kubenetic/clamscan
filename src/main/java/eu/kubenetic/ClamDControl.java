@@ -58,7 +58,7 @@ public enum ClamDControl {
      * sending a zero-length chunk. Note: do not exceed StreamMaxLength as defined in clamd.conf, otherwise clamd will
      * reply with INSTREAM size limit exceeded and close the connection.
      */
-    INSTREAM("nINSTREAM"),
+    INSTREAM("zINSTREAM\0"),
 
     /**
      * It is mandatory to newline terminate this command, or prefix with n or z.
