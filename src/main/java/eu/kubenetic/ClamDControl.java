@@ -71,12 +71,12 @@ public enum ClamDControl {
     FILDES("nFILDES"),
 
     /**
-     * IIt is mandatory to newline terminate this command, or prefix with n or z, it is recommended to only use the z prefix.
+     * It is mandatory to newline terminate this command, or prefix with n or z, it is recommended to only use the z prefix.
      *
      * Replies with statistics about the scan queue, contents of scan queue, and memory usage. The exact reply format
      * is subject to change in future releases.
      */
-    STATS("nSTATS"),
+    STATS("zSTATS\0"),
 
     /**
      * It is mandatory to prefix this command with n or z, and all commands inside IDSESSION must be prefixed.
