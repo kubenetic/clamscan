@@ -16,7 +16,7 @@ public enum ClamDControl {
     /**
      * Reload the virus databases.
      */
-    RELOAD("RELOAD"),
+    RELOAD("RELOAD\0"),
 
     /**
      * Perform a clean exit.
