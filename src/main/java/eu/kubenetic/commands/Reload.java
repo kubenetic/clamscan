@@ -2,7 +2,6 @@ package eu.kubenetic.commands;
 
 import eu.kubenetic.ClamDControl;
 import eu.kubenetic.exceptions.MissingPropertyException;
-import eu.kubenetic.model.ClamStats;
 
 import java.io.IOException;
 import java.io.InputStream;
