@@ -19,7 +19,7 @@ class InstreamTest {
     }
 
     @Test
-    public void testDwgSample() throws IOException {
+    void testDwgSample() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("colorwh.dwg").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
             System.out.println(command.execute(inputStream));
@@ -27,7 +27,7 @@ class InstreamTest {
     }
 
     @Test
-    public void testEICARZip() throws IOException {
+    void testEICARZip() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("eicar_com.zip").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
             System.out.println(command.execute(inputStream));
@@ -35,10 +35,18 @@ class InstreamTest {
     }
 
     @Test
-    public void testEICARText() throws IOException {
+    void testEICARText() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("eicar.txt").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
             System.out.println(command.execute(inputStream));
         }
     }
+
+//    public void testParseClamDRepsonse() {
+//        String inputText = "stream: Win.Test.EICAR_HDB-1 FOUND\n" +
+//                "stream: Win.Test.EICAR_HDB-1 FOUND\n" +
+//                "stream: OK";
+//
+//
+//    }
 }
