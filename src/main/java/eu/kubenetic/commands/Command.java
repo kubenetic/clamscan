@@ -7,20 +7,12 @@ import java.util.Objects;
 
 public abstract class Command {
 
-    protected final static byte[] CLOSE_SEQUENCE = new byte[]{0, 0, 0, 0};
-    protected final static int DEFAULT_BUFFER_SIZE = 2048;
+    protected static final byte[] CLOSE_SEQUENCE = new byte[]{0, 0, 0, 0};
+    protected static final int DEFAULT_BUFFER_SIZE = 2048;
 
     protected final String host;
     protected final Integer port;
-
-    /**
-     * Connection timeout in milliseconds
-     */
     protected final int connectionTimeout;
-
-    /**
-     * Read timeout in milliseconds
-     */
     protected final int readTimeout;
     protected final int bufferSize;
 
