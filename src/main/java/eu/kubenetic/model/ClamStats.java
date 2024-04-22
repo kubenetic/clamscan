@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ClamStats implements Serializable{
+public class ClamStats implements Serializable {
     private int pools;
     private String state;
     private int queueLength;
@@ -95,7 +95,6 @@ public class ClamStats implements Serializable{
 
         if (queueMatcher.find()) {
             int queueItems = Integer.parseInt(queueMatcher.group(1));
-            //double stats = Double.parseDouble(queueMatcher.group(2));
             clamStats.setQueueLength(queueItems);
         }
 
