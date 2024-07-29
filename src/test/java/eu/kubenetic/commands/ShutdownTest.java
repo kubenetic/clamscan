@@ -2,12 +2,12 @@ package eu.kubenetic.commands;
 
 import org.junit.jupiter.api.Test;
 
-class ShutdownTest {
+class ShutdownTest extends IntegrationEnvironmentBase {
 
     private final Shutdown command;
 
     ShutdownTest() {
-        this.command = new Shutdown("localhost", 3310);
+        this.command = new Shutdown("localhost", super.clamavPort);
     }
 
     @Test

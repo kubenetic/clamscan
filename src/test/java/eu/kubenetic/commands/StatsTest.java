@@ -2,12 +2,12 @@ package eu.kubenetic.commands;
 
 import org.junit.jupiter.api.Test;
 
-class StatsTest {
+class StatsTest extends IntegrationEnvironmentBase {
 
     private final Stats command;
 
     StatsTest() {
-        this.command = new Stats("localhost", 3310);
+        this.command = new Stats("localhost", super.clamavPort);
     }
 
     @Test

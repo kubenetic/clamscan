@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PingTest {
+class PingTest extends IntegrationEnvironmentBase {
 
     private final Ping command;
 
     PingTest() {
-        this.command = new Ping("localhost", 3310);
+        this.command = new Ping("localhost", super.clamavPort);
     }
 
     @Test

@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ReloadTest {
+class ReloadTest extends IntegrationEnvironmentBase {
 
     private final Reload command;
 
     ReloadTest() {
-        this.command = new Reload("localhost", 3310);
+        this.command = new Reload("localhost", super.clamavPort);
     }
 
     @Test

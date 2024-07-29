@@ -9,13 +9,13 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class InstreamTest {
+class InstreamTest extends IntegrationEnvironmentBase {
 
     private final static Path TEST_DATA_DIRECTORY = Paths.get("src", "test", "resources", "test-data");
     private final Instream command;
 
     InstreamTest() {
-        this.command = new Instream("localhost", 3310);
+        this.command = new Instream("localhost", super.clamavPort);
     }
 
     @Test

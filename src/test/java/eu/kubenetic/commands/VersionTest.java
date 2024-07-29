@@ -2,20 +2,21 @@ package eu.kubenetic.commands;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-class VersionTest {
+public class VersionTest extends IntegrationEnvironmentBase {
 
-    private static final String CURRENT_VERSION = "ClamAV 1.1.3/27252/Sun Apr 21 08:23:14 2024";
+    private static final String CURRENT_VERSION = "ClamAV 1.1.3";
     private final Version command;
 
     VersionTest() {
-        this.command = new Version("localhost", 3310);
+        this.command = new Version("localhost", super.clamavPort);
     }
 
     @Test
     void testVersion() {
         String actual = command.execute();
-        assertEquals(CURRENT_VERSION, actual);
+        assertThat(actual, startsWith(CURRENT_VERSION));
     }
 }
