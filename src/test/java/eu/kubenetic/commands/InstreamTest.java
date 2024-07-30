@@ -1,5 +1,6 @@
 package eu.kubenetic.commands;
 
+import eu.kubenetic.ClamDClient;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -12,17 +13,19 @@ import java.nio.file.Paths;
 class InstreamTest extends IntegrationEnvironmentBase {
 
     private final static Path TEST_DATA_DIRECTORY = Paths.get("src", "test", "resources", "test-data");
-    private final Instream command;
 
-    InstreamTest() {
-        this.command = new Instream("localhost", super.clamavPort);
+    private final ClamDClient client;
+
+    public InstreamTest() {
+        super();
+        client = new ClamDClient("localhost", super.clamavPort);
     }
 
     @Test
     void testDwgSample() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("colorwh.dwg").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
-            System.out.println(command.execute(inputStream));
+            client.cmdInStream(inputStream);
         }
     }
 
@@ -30,7 +33,7 @@ class InstreamTest extends IntegrationEnvironmentBase {
     void testEICARZip() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("eicar_com.zip").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
-            System.out.println(command.execute(inputStream));
+            client.cmdInStream(inputStream);
         }
     }
 
@@ -38,7 +41,7 @@ class InstreamTest extends IntegrationEnvironmentBase {
     void testEICARText() throws IOException {
         File testFile = TEST_DATA_DIRECTORY.resolve("eicar.txt").toFile();
         try (InputStream inputStream = new FileInputStream(testFile.getAbsoluteFile())) {
-            System.out.println(command.execute(inputStream));
+            client.cmdInStream(inputStream);
         }
     }
 

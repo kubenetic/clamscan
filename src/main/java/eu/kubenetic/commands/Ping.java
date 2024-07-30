@@ -1,6 +1,7 @@
 package eu.kubenetic.commands;
 
 import eu.kubenetic.ClamDControl;
+import eu.kubenetic.ClamDClient;
 import eu.kubenetic.exceptions.MissingPropertyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,28 +9,20 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Arrays;
 
-public class Ping extends Command {
+public class Ping {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(Ping.class);
     private final static int RESPONSE_LENGHT = 4;
 
-    public Ping(String host, Integer port) throws MissingPropertyException {
-        super(host, port);
-    }
-
-    public Ping(String host, Integer port, int connectionTimeout, int readTimeout, int bufferSize)
-            throws MissingPropertyException {
-        super(host, port, connectionTimeout, readTimeout, bufferSize);
-    }
-
-    public boolean execute() {
+    public static boolean execute(InetSocketAddress addr, int connectionTimeout, int readTimeout) {
         byte[] inputPayload = new byte[RESPONSE_LENGHT];
 
         try (Socket socket = new Socket()) {
-            socket.connect(super.getInetSocketAddress(), connectionTimeout);
+            socket.connect(addr, connectionTimeout);
             socket.setSoTimeout(readTimeout);
 
             try (OutputStream outputStream = socket.getOutputStream();

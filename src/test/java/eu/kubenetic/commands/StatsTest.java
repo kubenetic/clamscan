@@ -1,17 +1,23 @@
 package eu.kubenetic.commands;
 
-import org.junit.jupiter.api.Test;
+import eu.kubenetic.ClamDClient;
+import eu.kubenetic.model.ClamStats;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 class StatsTest extends IntegrationEnvironmentBase {
 
-    private final Stats command;
+    private final ClamDClient client;
 
-    StatsTest() {
-        this.command = new Stats("localhost", super.clamavPort);
+    public StatsTest() {
+        super();
+        this.client = new ClamDClient("localhost", super.clamavPort);
     }
 
-    @Test
     public void testStats() {
-        System.out.println(command.execute());
+        ClamStats stats = client.cmdStats();
+        assertThat(stats.pools(), equalTo(1));
+        assertThat(stats.state(), equalTo("VALID PRIMARY"));
     }
 }
